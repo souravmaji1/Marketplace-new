@@ -110,7 +110,7 @@ export function MainRoutes() {
         //   new ethers.providers.Web3Provider(window.ethereum).getSigner() || {}
         // }
         // supportedWallets={[metamaskWallet(), walletConnect()]}
-        clientId="1cb454fe05bf7fa7e92eedb4856986e4"
+        clientId="f3324b0ff2cfad9f6974b1c11c89ab79"
       >
         <ChakraProvider>
         <Routes>
