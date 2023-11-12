@@ -1,0 +1,16 @@
+@media screen and (max-width: 48.75rem) {
+.ArtistProfilePhoto {
+  left: 0;
+  right: 0;
+  bottom: 70px;
+}  
+.ArtistCover {
+ height: 17.5rem; 
+}
+}
+
+@media screen and (max-width: 64rem) { 
+  .ArtistCover {
+  height: 250px;
+  }
+}

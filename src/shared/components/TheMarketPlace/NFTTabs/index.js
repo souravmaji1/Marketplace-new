@@ -1,0 +1,1 @@
+export { NFTTabs } from "./NFTTabs";

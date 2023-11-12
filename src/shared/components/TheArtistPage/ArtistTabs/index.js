@@ -1,0 +1,1 @@
+export { ArtistTabs } from "./ArtistTabs";

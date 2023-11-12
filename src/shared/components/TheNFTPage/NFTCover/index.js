@@ -1,0 +1,1 @@
+export { NFTCover } from "./NFTCover";

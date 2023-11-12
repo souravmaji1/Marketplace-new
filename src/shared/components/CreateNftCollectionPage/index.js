@@ -1,0 +1,1 @@
+export { CreateNftCollectionPage } from "./CreateNftCollectionPage";

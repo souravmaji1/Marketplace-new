@@ -1,0 +1,1 @@
+export { ArtistInfo } from "./ArtistInfo";

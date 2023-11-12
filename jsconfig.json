@@ -1,0 +1,18 @@
+
+  {
+    "compilerOptions": {
+      "jsx": "react",
+      "baseUrl": ".",
+      "paths": {
+        "Components/*": ["src/shared/components/*"],
+        "Containers/*": ["src/shared/containers/*"],
+        // "Utils/*": ["src/utils/*"],
+        "Assets/*": ["public/assets/*"],
+        // "Context/*": ["src/context/*"],
+        "Routes/*": ["src/routes/*"],
+      "Root/*": ["src/*"],
+      "Images/*": ["src/images*"],
+      "App/*": ["src/app*"]
+    }
+  }
+}

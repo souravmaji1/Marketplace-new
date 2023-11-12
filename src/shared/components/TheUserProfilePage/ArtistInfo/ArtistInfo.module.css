@@ -1,0 +1,30 @@
+@media screen and (max-width: 48.75rem) {
+.ArtistProfilePhoto {
+  left: 0;
+  right: 0;
+}  
+.ArtistName {
+ flex-direction: column; 
+ align-items: start;
+ gap: 30px;
+width: 100%;
+padding: 0 !important;
+}
+.WalletDetails {
+ flex-direction: column; 
+ align-items: start;
+ gap: 30px;
+ width: 100%;
+}
+.WalletDetails > div {
+ width: 100%;
+}
+}
+
+@media screen and (max-width: 64rem) { 
+  .ArtistName {
+  flex-direction: column;
+  align-items: start;
+  gap: 30px;
+  }
+}

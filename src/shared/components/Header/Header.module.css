@@ -1,0 +1,79 @@
+.NavLinks {
+  /* width: 7.3125rem; */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 4.9375rem;
+  height: 5rem;
+  /* identical to box height, or 396% */
+  color: #232429;
+}
+.open {
+  /* border: 2px solid blue; */
+  width: 100% !important;
+  min-width: 300px !important;
+  max-width: 300px !important;
+  transition: 0.2s !important;
+  opacity: 1;
+}
+.NavHead {
+  flex-direction: column;
+  min-height: 100vh;
+  position: fixed;
+  align-items: start;
+  justify-content: start;
+  padding-left: 3.125rem;
+  padding-right: 3.125rem;
+  background-color: white;
+  min-width: 0px !important;
+  max-width: 0px !important;
+  width: 0 !important;
+  transition: 0.2s !important;
+  opacity: 0;
+  padding-top: 6.25rem;
+  top: 0;
+  left: 0;
+  display: none !important;
+  /* z-index: -1000000; */
+}
+
+/* @media (max-width: 1024px) {
+  .Header {
+    padding-left: 3.125rem;
+  }
+  .NavHead {
+    flex-direction: column;
+    min-height: 100vh;
+    position: fixed;
+    align-items: start;
+    justify-content: start;
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
+    padding-top: 3.125rem;
+    background-color: white;
+    min-width: 0px !important;
+    max-width: 0px !important;
+    width: 0 !important;
+    transition: 0.2s !important;
+    opacity: 0;
+    padding-top: 6.25rem;
+    top: 0;
+    left: 0;
+    z-index: -1000000;
+    
+  }
+  .open {
+    width: 100% !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    transition: 0.2s !important;
+    opacity: 1;
+  }
+}
+@media (min-width: 69.375rem) {
+  .NavHead {
+    position: relative;
+  }
+
+}  */

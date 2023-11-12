@@ -1,0 +1,1 @@
+export { TheNFTPage } from "./TheNFTPage";
