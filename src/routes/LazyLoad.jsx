@@ -12,3 +12,4 @@ export const MarketPlace = lazy(() => import("Containers/MarketPlace"));
 export const ArtistPage = lazy(() => import("Containers/ArtistPage"));
 export const UserProfile = lazy(() => import("Containers/UserProfile"));
 export const NFTPage = lazy(() => import("Containers/NFTPage"));
+export const tokenId = lazy(() => import("Containers/tokenId"));

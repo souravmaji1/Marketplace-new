@@ -23,8 +23,8 @@ export default function UploadAndMint() {
   const sdk = useSDK();
   const address = useAddress();
   const { mutateAsync: upload } = useStorageUpload();
-  const { contract: souravnft } = useContract("0x4761F54E1eA449c175b14f521a3F790cE97b8E90");
-  const { contract: NFTMarketplace } = useContract("0xF12CBCEC54428dDb41E3a2CB428b5691Ae431786");
+  const { contract: souravnft } = useContract("0xF1D4ad1282A02Be09A76945dd4477c22d6a9E4dE");
+  const { contract: NFTMarketplace } = useContract("0xBdaA43F8B49e182fc625b9b16c915ba7ECdBF364");
   const { mutateAsync: safeMint, isLoading: mintIsLoading } = useContractWrite(souravnft, "safeMint");
   const { mutateAsync: listNFTForSale, isLoading: listIsLoading } = useContractWrite(NFTMarketplace, "listNFTForSale");
   const { mutateAsync: createAuction, isLoading: auctionLoading } = useContractWrite(NFTMarketplace, "createAuction");
@@ -151,7 +151,7 @@ export default function UploadAndMint() {
       <input  className={`w-full h-full border-none outline-none focus:outline-none rounded-2xl focus:ring-white`} style={{color:'black'}}  type="text" placeholder="Description" value={biddescritpion} onChange={(e) => setBiddescription(e.target.value)} />
       </div>
       <div className="w-full md:w-[330px] h-[46px]  mb-4">
-      <input  className={`w-full h-full border-none outline-none focus:outline-none rounded-2xl focus:ring-white`} style={{color:'black'}}  type="number" placeholder="Price" value={bidprice} onChange={(e) => setBidprice(e.target.value)} />
+      <input  className={`w-full h-full border-none outline-none focus:outline-none rounded-2xl focus:ring-white`} style={{color:'black'}}  type="number" placeholder="Starting Price" value={bidprice} onChange={(e) => setBidprice(e.target.value)} />
       </div>
       <div className="w-full md:w-[330px] h-[46px]  mb-4">
       <button   className={`w-full md:w-[330px] h-[46px] px-[50px] bg-purple-500 rounded-2xl justify-center items-center gap-3 inline-flex disabled:bg-slate-300`}   onClick={auctionNft} disabled={mintIsLoading || listIsLoading}>
