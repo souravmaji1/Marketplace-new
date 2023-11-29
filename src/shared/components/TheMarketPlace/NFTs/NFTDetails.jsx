@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useContract, useContractEvents, useContractWrite } from "@thirdweb-dev/react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useContract, useContractEvents, useContractWrite,useContractRead } from "@thirdweb-dev/react";
 import { ethers } from "ethers";
 
 const NFTDetails = () => {
   const { tokenId } = useParams();
-  const { contract } = useContract("0xBdaA43F8B49e182fc625b9b16c915ba7ECdBF364");
-  const { data: allEvents } = useContractEvents(contract, "NFTListed");
+  const navigate = useNavigate();
+  const { contract } = useContract("0x5ef84e1B60E892e7929D6Af21521480732f21367");
+  const { data: allEvents } = useContractRead(contract, "getAllListedNFTs");
   const { mutateAsync: buyNFT, isLoading: isBuying } = useContractWrite(contract, "buyNFT");
+  
 
   // Add a useEffect to log the allEvents data
   useEffect(() => {
@@ -20,7 +22,7 @@ const NFTDetails = () => {
   }
 
   // Find the specific NFT event using the tokenId
-  const nftEvent = allEvents.find((event) => event.data.tokenId.toString() === tokenId);
+  const nftEvent = allEvents.find((event) => event.tokenId.toString() === tokenId);
 
   // Check if the NFT event is found
   if (!nftEvent) {
@@ -28,7 +30,7 @@ const NFTDetails = () => {
   }
 
   // Destructure NFT data from the event
-  const { tokenURI, price } = nftEvent.data;
+  const { tokenURI, price } = nftEvent;
 
   // Convert BigNumber to decimal for price
   const convertedPrice = parseInt(price._hex, 16);
@@ -49,18 +51,28 @@ const NFTDetails = () => {
   const buyNFTHandler = async () => {
     try {
       const data = await buyNFT({ args: [tokenId],  overrides:{
-        value: convertedPrice,
+        value: nftEvent.price,
       },
     });
       console.info("Contract call success", data);
+      navigate("/marketplace");
     } catch (err) {
       console.error("Contract call failure", err);
       // Handle errors or display an error message to the user
     }
   };
 
+  const convertToDecimal = (value) => {
+    return parseInt(value._hex, 16);
+  };
+
+  const convertWeiToEther = (weiValue) => {
+    return ethers.utils.formatEther(weiValue);
+  };
+
   return (
     <div className="w-full mb-5 pb-5 h-fit bg-zinc-800 justify-start items-center md:gap-[60px] flex md:flex-row flex-col">
+      
       <div className="w-full md:w-1/2">
         <img className="w-full h-[691px]" src={imageSrc} alt={`NFT ${tokenId}`} style={{ maxWidth: "100%" }} />
       </div>
@@ -74,7 +86,7 @@ const NFTDetails = () => {
             Token ID: {tokenId}
           </div>
           <div className="w-full text-white text-[22px] font-normal capitalize leading-9">
-            Price: {convertedPrice} ETH
+            Price: {convertWeiToEther(nftEvent.price)} ETH
           </div>
 
           {/* Add any other details you want to display */}

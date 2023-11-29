@@ -10,6 +10,7 @@ import { EnvelopeSimple, LockKey, UserIcon } from "Assets/svgs";
 import { Button } from "Components/Button";
 import { Input } from "Components/Input";
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from '@chakra-ui/react';
+import { ethers } from "ethers";
 
 export default function UploadAndMint() {
   const [file, setFile] = useState();
@@ -23,15 +24,13 @@ export default function UploadAndMint() {
   const sdk = useSDK();
   const address = useAddress();
   const { mutateAsync: upload } = useStorageUpload();
-  const { contract: souravnft } = useContract("0xF1D4ad1282A02Be09A76945dd4477c22d6a9E4dE");
-  const { contract: NFTMarketplace } = useContract("0xBdaA43F8B49e182fc625b9b16c915ba7ECdBF364");
+  const { contract: souravnft } = useContract("0x1401B7964854161870e15Ec49ecc66c1b44F6317");
+  const { contract: NFTMarketplace } = useContract("0x5ef84e1B60E892e7929D6Af21521480732f21367");
   const { mutateAsync: safeMint, isLoading: mintIsLoading } = useContractWrite(souravnft, "safeMint");
   const { mutateAsync: listNFTForSale, isLoading: listIsLoading } = useContractWrite(NFTMarketplace, "listNFTForSale");
   const { mutateAsync: createAuction, isLoading: auctionLoading } = useContractWrite(NFTMarketplace, "createAuction");
   
-
-  
-  
+ 
 
   const mintNft = async () => {
     try {
@@ -48,8 +47,8 @@ export default function UploadAndMint() {
       const decimalTokenID = parseInt(tokenID, 16);
       console.log("Decimal Token ID:", decimalTokenID);
 
-
-      const listNft = await listNFTForSale({ args: [decimalTokenID, price, name, description] });
+      const mintprice = ethers.utils.parseUnits(price, "ether");
+      const listNft = await listNFTForSale({ args: [decimalTokenID, mintprice, name, description] });
       console.log(listNft)
 
 
@@ -77,7 +76,8 @@ export default function UploadAndMint() {
 
       if (duration) {
         const unixTimestamp = duration.getTime() / 1000;
-        const auctionnft = await createAuction({ args: [decimalTokenID, bidprice, unixTimestamp,bidname,biddescritpion] });
+        const mintbidprice = ethers.utils.parseUnits(bidprice, "ether");
+        const auctionnft = await createAuction({ args: [decimalTokenID, mintbidprice , unixTimestamp,bidname,biddescritpion] });
         console.info("Minting success", auctionnft);
       } else {
         console.error("Please select a duration for the auction");

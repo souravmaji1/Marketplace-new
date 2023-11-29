@@ -8,6 +8,7 @@ import {
 } from "Assets/svgs";
 
 import { NFTs } from "./NFTs";
+import { CreatedNFTCard } from "./NFTs/CreatedNft";
 import { Collections } from "./Collections";
 import { ArtistTabs } from "./ArtistTabs";
 import { ArtistCover } from "./ArtistCover";
@@ -37,7 +38,7 @@ export const TheArtistPage = () => {
         />
       </div>
       <div>
-        {currentTab === tabs[tabMap.Created] ? <NFTs /> : null}
+        {currentTab === tabs[tabMap.Created] ? <CreatedNFTCard /> : null}
         {currentTab === tabs[tabMap.Owned] ? <NFTs /> : null}
         {currentTab === tabs[tabMap.Collections] ? <Collections /> : null}
       </div>

@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import React from "react";
 import { ethers } from "ethers";
 
-export const NFTs = ({searchTerm}) => {
+export const NFTs = () => {
   const { contract } = useContract("0x5ef84e1B60E892e7929D6Af21521480732f21367");
 
   // Get all events emitted by the contract
   const { data: allEvents } = useContractRead(contract, "getAllListedNFTs");
 
   // Check if allEvents is defined before filtering
-  const filteredEvents = allEvents && allEvents.filter((event) => event.tokenURI && event.tokenURI !== "" && event.name.toLowerCase().includes(searchTerm.toLowerCase()));
+  const filteredEvents = allEvents && allEvents.filter((event) => event.tokenURI && event.tokenURI !== "");
 
   // Convert BigNumber to decimal
   const convertToDecimal = (value) => {

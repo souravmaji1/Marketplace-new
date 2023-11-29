@@ -27,6 +27,7 @@ import {
 import { getNetworkName } from "Root/utils/general";
 import { ChakraProvider } from '@chakra-ui/react'
 import NFTDetails from "Components/TheMarketPlace/NFTs/NFTDetails";
+import NFTAuctiondetails from 'Components/TheMarketPlace/Collections/NFTAuctiondetail';
 
 const HomeScreen = () => (
   <ScreenWrapper>
@@ -124,7 +125,7 @@ export function MainRoutes() {
           
           <Route path="/create-nft" element={<CreateNftPage />} />
           <Route path="/NFTs/:tokenId" element={<NFTDetails />} />
-         
+          <Route path="/Collection/:tokenId" element={<NFTAuctiondetails />} />
 
           <Route path="/connect-wallet" element={<WalletConnectScreen />} />
           <Route path="/rankings" element={<ArtistRankingScreen />} />

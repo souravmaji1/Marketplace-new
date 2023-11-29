@@ -18,6 +18,7 @@ export const tabMap = {
 
 export const TheMarketPlace = () => {
   const [currentTab, setCurrentTab] = useState(tabs[tabMap["NFTs"]]);
+  const [searchTerm, setSearchTerm] = useState(""); // Add this line
 
   return (
     <>
@@ -30,8 +31,10 @@ export const TheMarketPlace = () => {
         </div>
         <div className="w-full h-[60px] py-3 rounded-2xl border border-neutral-700 px-5 justify-center items-center flex">
           <div className="h-[60px] grow justify-start items-center flex bg-transparent">
-            <input
+          <input
               placeholder="Search your favourite NFTs"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
               className="grow shrink basis-0 text-zinc-500 text-[16px] font-normal bg-transparent border-none border-transparent focus:border-transparent leading-snug focus:ring-0 focus:outline-none focus:border-none h-full w-full"
             />
           </div>
@@ -50,7 +53,7 @@ export const TheMarketPlace = () => {
         />
       </div>
       <div>
-        {currentTab === tabs[tabMap.NFTs] ? <NFTs /> : null}
+        {currentTab === tabs[tabMap.NFTs] ? <NFTs searchTerm={searchTerm} /> : null}
         {currentTab === tabs[tabMap.Collections] ? <Collections /> : null}
       </div>
     </>

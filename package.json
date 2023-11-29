@@ -25,6 +25,7 @@
     "@web3-react/walletconnect-connector": "^6.2.13",
     "@web3-react/walletlink-connector": "^6.2.14",
     "axios": "^1.5.0",
+    "bignumber.js": "^9.1.2",
     "dotenv": "^16.3.1",
     "ethers": "^5.7.2",
     "framer-motion": "^10.16.4",
